@@ -1,0 +1,1 @@
+mkdir -p files/{movies,music,photos,docs/{diagrams,markdown},code/{go,js,elm}}

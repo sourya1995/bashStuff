@@ -1,0 +1,33 @@
+# START:include
+$include /etc/inputrc
+# END:include#
+
+# START:history
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+# END:history
+
+# START:bind_doublequote
+"\e\"": "\C-a\"\C-e\""
+# END:bind_doublequote
+
+# START:completion
+set completion-ignore-case On
+# END:completion
+
+
+# START:stats
+set visible-stats On
+# END:stats
+
+# START:bell
+set bell-style none
+# END:bell
+
+# START:showall
+set show-all-if-ambiguous on
+# END:showall
+
+# START: vi
+set editing-mode vi
+# END: vi

@@ -1,0 +1,62 @@
+[ -z "$PS1" ] && return
+
+HISTCONTROL=ignoreboth
+
+shopt -s histappend
+
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+HISTIGNORE="exit:clear"
+
+export EDITOR=nano
+export VISUAL=nano
+
+# START:path
+export PATH=~/.local/bin:~/bin:$PATH
+# END:path
+
+USERCOLOR="\[$(tput setaf 6)\]"
+RESET="\[$(tput sgr0)\]"
+
+export PS1="${USERCOLOR}\u${RESET}@\h:\w \\$ "
+
+
+alias ll='ls -alh'
+alias myip='curl icanhazip.com'
+alias sudo='sudo '
+
+function mcd () {
+  mkdir -p "$1" && cd "$1"
+}
+
+function showme () {
+    echo "OS:"
+    uname -a
+    echo -e "\nUptime:"
+    uptime
+    echo -e "\nMemory:"
+    free
+    echo -e "\nWAN IP :"
+    curl -s icanhazip.com
+}
+
+alias ..='cd ..'
+
+# START:pygmentize
+alias colorize="pygmentize -O style=native -g -f terminal256"
+# END:pygmentize
+
+# START:direnv
+if hash direnv 2>/dev/null; then
+  eval "$(direnv hook bash)"
+fi
+# END:direnv
+
+# START:fzf
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# START_HIGHLIGHT
+# Add additional completion commands
+complete -F _fzf_path_completion -o default -o bashdefault nano
+# END_HIGHLIGHT
+# END:fzf

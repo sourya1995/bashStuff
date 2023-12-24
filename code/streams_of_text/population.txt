@@ -1,0 +1,10 @@
+State,Population,Reps
+Alabama,4802982,7
+California,37341989,53
+Florida,18900773,27
+Hawaii,1366862,2
+Illinois,12864380,18
+New York,19421055,27
+South Dakota,819761,1
+Wisconsin,5698230,8
+Wyoming,568300,1

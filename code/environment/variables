@@ -1,0 +1,7 @@
+#!/usr/bin/env perl
+
+$home =  $ENV{'HOME'};
+print "Home directory: $home\n";
+
+$apikey = $ENV{'API_KEY'};
+print "API key: $apikey\n";

@@ -1,0 +1,15 @@
+# START:coloring
+include "/usr/share/nano/*.nanorc"
+# END:coloring
+
+# START:suspend
+set suspend
+# END:suspend
+
+# START:nowrap
+set nowrap
+# END:nowrap
+
+# START:linenumbers
+set linenumbers
+# END:linenumbers

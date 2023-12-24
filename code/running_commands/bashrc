@@ -1,0 +1,59 @@
+[ -z "$PS1" ] && return
+
+HISTCONTROL=ignoreboth
+
+shopt -s histappend
+
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+HISTIGNORE="exit:clear"
+
+export EDITOR=nano
+export VISUAL=nano
+
+export PATH="~/bin:$PATH"
+
+USERCOLOR='\[$(tput setaf 6)\]'
+RESET='\[$(tput sgr0)\]'
+
+PS1="${USERCOLOR}\u${RESET}@\h:\w \\$ "
+
+
+alias ll='ls -alh'
+
+alias myip='curl icanhazip.com'
+
+alias sudo='sudo '
+
+function mcd () {
+  mkdir -p "$1" && cd "$1"
+}
+
+function showme () {
+  echo "OS:"
+  uname -a
+  echo -e "\nUptime:"
+  uptime
+  echo -e "\nMemory:"
+  free
+  echo -e "\nWAN IP :"
+  curl -s icanhazip.com
+}
+
+alias ..='cd ..'
+
+bind '"\C-x\C-o": " >> output.txt'
+
+bind '"\es": "\C-asudo \C-e"'
+
+
+# START:set_prompt
+function setPrompt() {
+  let error_code=$?
+  PS1="${USERCOLOR}\u${RESET}@\h:\w - ${error_code} - \\$ "
+}
+
+PROMPT_COMMAND=setPrompt
+# END:set_prompt
+

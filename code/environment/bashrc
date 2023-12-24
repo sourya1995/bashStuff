@@ -1,0 +1,94 @@
+# START:return
+[ -z "$PS1" ] && return
+# END:return
+
+# START:histcontrol
+HISTCONTROL=ignoreboth
+# END:histcontrol
+
+# START:histappend
+shopt -s histappend
+# END:histappend
+
+# START:histsize
+HISTSIZE=1000
+HISTFILESIZE=2000
+# END:histsize
+
+# START:histignore
+HISTIGNORE="exit:clear"
+# END:histignore
+
+# START:editor
+export EDITOR=nano
+export VISUAL=nano
+# END:editor
+
+# START:path
+export PATH="~/bin:$PATH"
+# END:path
+
+# START:colorprompt
+USERCOLOR='\[$(tput setaf 6)\]'  # cyan
+RESET='\[$(tput sgr0)\]'
+
+PS1="${USERCOLOR}\u${RESET}@\h:\w \\$ "
+# END:colorprompt
+
+
+# START:alias_ll
+alias ll='ls -alh'
+# END:alias_ll
+
+# START:alias_ip
+alias myip='curl icanhazip.com'
+# END:alias_ip
+
+# START:alias_sudo
+alias sudo='sudo '
+# END:alias_sudo
+
+# START:function_mcd
+function mcd () {
+  mkdir -p "$1" && cd "$1"
+}
+# END:function_mcd
+
+# START:function_showme
+function showme () {
+  echo "OS:"
+  uname -a
+  echo -e "\nUptime:"
+  uptime
+  echo -e "\nMemory:"
+  free
+  echo -e "\nWAN IP :"
+  curl -s icanhazip.com
+}
+# END:function_showme
+
+
+# START:function_less
+function less() {
+  if [ -t 0 ]; then
+    command less -N "$@"
+  else
+    command less "$@"
+  fi
+}
+# END:function_less
+
+alias ..='cd ..'
+
+# START:bind_output
+bind '"\C-x\C-o": " >> output.txt'
+# END:bind_output
+
+# START:bind_sudo
+bind '"\es": "\C-asudo \C-e"'
+# END:bind_sudo
+
+# START:vi
+set -o vi
+# END:vi
+
